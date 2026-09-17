@@ -1,0 +1,3 @@
+package com.sneha.leavemanagement.controller;
+import com.sneha.leavemanagement.model.AuditLog; import com.sneha.leavemanagement.repository.AuditLogRepository; import org.springframework.data.domain.*; import org.springframework.security.access.prepost.PreAuthorize; import org.springframework.web.bind.annotation.*;
+@RestController @RequestMapping("/api/audit") @PreAuthorize("hasRole('ADMIN')") public class AuditController{private final AuditLogRepository repo;public AuditController(AuditLogRepository r){repo=r;}@GetMapping public Page<AuditLog> list(@RequestParam(defaultValue="0") int page,@RequestParam(defaultValue="20") int size){return repo.findAllByOrderByTimestampDesc(PageRequest.of(Math.max(0,page),Math.min(Math.max(1,size),100)));}}
