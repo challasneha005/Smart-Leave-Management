@@ -1,0 +1,7 @@
+.idea/
+*.iml
+backend/target/
+**/target/
+*.class
+.env
+.DS_Store
